@@ -1,9 +1,8 @@
-import { Request, Response } from 'express';
-import LeaderboardModel, { Leaderboard } from '../model/leaderboard';
+import LeaderboardModel from '../model/leaderboard.js';
 import { body, validationResult } from 'express-validator';
 
 // Get leaderboard
-export const getLeaderboard = async (req: Request, res: Response) => {
+const getLeaderboard = async (req, res) => {
     try {
         const leaderboard = await LeaderboardModel.find().sort({ maxScore: -1 }).exec();
         res.status(200).json(leaderboard);
@@ -13,11 +12,11 @@ export const getLeaderboard = async (req: Request, res: Response) => {
 };
 
 // Update leaderboard
-export const updateLeaderboard = [
+const updateLeaderboard = [
     body('currentPlayerId').isMongoId().withMessage('Invalid player ID'),
     body('quizId').isMongoId().withMessage('Invalid quiz ID'),
     body('newScore').isInt({ gt: 0 }).withMessage('Score must be a positive integer'),
-    async (req: Request, res: Response) => {
+    async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -45,3 +44,5 @@ export const updateLeaderboard = [
         }
     }
 ];
+
+export { getLeaderboard, updateLeaderboard };

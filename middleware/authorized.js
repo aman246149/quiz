@@ -1,9 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 
 
-export const authorize = (req: Request, res: Response, next: NextFunction) => {
+const authorize = (req, res, next) => {
     const secretKey = process.env.JWT_SECRET;
     const token = req.headers['authorization']?.split(' ')[1]; // Get token from Authorization header
     if (!token) {
@@ -22,4 +21,4 @@ export const authorize = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-
+export { authorize }; 

@@ -1,8 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import UserModel, { User } from '../model/user';    
+import UserModel from '../model/user.js';    
 import { body, validationResult } from 'express-validator'; // Import validation functions
-
 
 
 
@@ -23,7 +22,7 @@ export const register = [
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
-        const newUser: User = new UserModel({
+        const newUser = new UserModel({
             email,
             password: hashedPassword,
             username

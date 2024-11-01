@@ -1,4 +1,4 @@
-import Question from '../model/question';
+import Question from '../model/question.js';
 import { body, validationResult } from 'express-validator'; // Import express-validator
 
 class QuestionController {

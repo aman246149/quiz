@@ -1,11 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import mongoose, { ConnectOptions } from 'mongoose';
-import leaderboardRoutes from './routes/leaderboard';
-import questionRoutes from './routes/question';
-import userRoutes from './routes/user';
-import quizRoutes from './routes/quiz';
-import { authorize } from './middleware/authorized';
+import mongoose from 'mongoose';
+import leaderboardRoutes from './routes/leaderboard.js';
+import questionRoutes from './routes/question.js';
+import userRoutes from './routes/user.js';
+import quizRoutes from './routes/quiz.js';
+import { authorize } from './middleware/authorized.js';
 dotenv.config();
 
 const app = express();
@@ -15,10 +15,10 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Hello, World!');
 });
-mongoose.connect(process.env.MONGO_URI as string, {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-} as ConnectOptions).then(() => console.log("Connected to MongoDB"))
+}).then(() => console.log("Connected to MongoDB"))
     .catch(err => console.log(err));
 
 app.use('/user', userRoutes);

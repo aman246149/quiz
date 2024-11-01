@@ -1,5 +1,5 @@
 import express from 'express';
-import { getLeaderboard, updateLeaderboard } from '../controller/leaderboard';
+import { getLeaderboard, updateLeaderboard } from '../controller/leaderboard.js';
 
 const router = express.Router();
 
@@ -9,4 +9,4 @@ router.get('/getLeaderboard', getLeaderboard);
 // Route to update the leaderboard
 router.post('/updateLeaderboard', updateLeaderboard);
 
-export default router;
+export default router;  
