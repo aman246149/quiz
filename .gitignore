@@ -1,0 +1,19 @@
+
+#env
+.env
+
+#node_modules
+node_modules
+
+#logs
+logs
+
+#docker
+Dockerfile
+docker-compose.yml
+
+#cursor
+.cursorignore
+
+#vs code
+.vscode
