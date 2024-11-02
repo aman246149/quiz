@@ -1,6 +1,6 @@
 
 import express from 'express';
-import { createQuiz, getAllQuizzes } from '../controller/quiz.js';
+import { createQuiz, getAllQuizzes, getAllQuizQuestions } from '../controller/quiz.js';
 
 const router = express.Router();
 
