@@ -27,3 +27,10 @@ export const getAllQuizzes = async (req, res) => {
     const quizzes = await QuizModel.find();
     res.status(200).json({ quizzes });
 };
+
+//get all quiz Questions by quizId
+export const getAllQuizQuestions = async (req, res) => {
+    const { quizId } = req.params;
+    const questions = await QuestionModel.find({ quizId });
+    res.status(200).json({ questions });
+};
