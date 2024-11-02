@@ -1,6 +1,6 @@
 import { body, validationResult } from 'express-validator';
 import QuizModel from '../model/quiz.js'; // Adjust the import based on your project structure
-
+import QuestionModel from '../model/question.js';
 export const createQuiz = [
     body('name').isString().notEmpty().withMessage('Quiz name is required'),
     async (req, res) => {
